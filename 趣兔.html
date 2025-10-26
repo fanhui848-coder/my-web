@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>趣兔旅游 - 发现世界的美好</title>
+  <!-- 引入外部资源 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <style>
+    /* 旅游主题样式调整 */
+    .navbar {
+      transition: background-color 0.3s;
+    }
+    .navbar-scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .section-padding {
+      padding: 80px 0;
+    }
+    .card-hover {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    /* 旅游主题颜色 */
+    .bg-primary {
+      background-color: #2a9d8f !important; /* 自然绿 */
+    }
+    .text-primary {
+      color: #2a9d8f !important;
+    }
+    .btn-primary {
+      background-color: #2a9d8f;
+      border-color: #2a9d8f;
+    }
+    .btn-primary:hover {
+      background-color: #21867a;
+      border-color: #21867a;
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 - 旅游主题 -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fa fa-paw text-primary me-2"></i>趣兔旅游
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">首页</a></li>
+          <li class="nav-item"><a class="nav-link" href="#destinations">热门目的地</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">我们的服务</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 英雄区 - 旅游主题 -->
+  <section id="home" class="bg-primary text-white py-20 mt-5">
+    <div class="container text-center">
+      <h1 class="display-4 mb-4">趣兔旅游，带您探索世界</h1>
+      <p class="lead mb-6">精选全球目的地，定制专属旅程，让每一次出行都充满惊喜</p>
+      <a href="#destinations" class="btn btn-light btn-lg">
+        探索目的地 <i class="fa fa-compass ms-2"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 主要内容区 -->
+  <main>
+    <!-- 热门目的地（原区块1） -->
+    <section id="destinations" class="section-padding bg-light">
+      <div class="container">
+        <div class="text-center mb-10">
+          <h2 class="display-5">热门目的地</h2>
+          <p class="text-muted">精选全球热门旅游岛屿，总有一处适合你</p>
+        </div>
+        
+        <div class="row g-4">
+          <!-- 目的地卡片1：马达京岛 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100">
+              <img src="https://picsum.photos/600/400?random=20" class="card-img-top" alt="马达京岛">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>马达京岛</h5>
+                <p class="card-text">马来西亚沙巴州的隐秘天堂，以清澈海水和丰富海洋生物闻名，是潜水爱好者的乐园。</p>
+                <a href="#" class="btn btn-outline-primary">查看行程</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 目的地卡片2：汀巴汀巴岛 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100">
+              <img src="https://picsum.photos/600/400?random=21" class="card-img-top" alt="汀巴汀巴岛">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>汀巴汀巴岛</h5>
+                <p class="card-text">原始生态保存完好的小众岛屿，白色沙滩环绕，水下珊瑚绚丽多彩，适合度假放松。</p>
+                <a href="#" class="btn btn-outline-primary">查看行程</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 目的地卡片3：马布达岛 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100">
+              <img src="https://picsum.photos/600/400?random=22" class="card-img-top" alt="马布达岛">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>马布达岛</h5>
+                <p class="card-text">融合原始渔村与奢华度假村的独特岛屿，可体验当地文化，也能享受高端度假服务。</p>
+                <a href="#" class="btn btn-outline-primary">查看行程</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 我们的服务（原区块2） -->
+    <section id="services" class="section-padding">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-6 mb-md-0">
+            <h2 class="display-5 mb-4">专业旅游服务</h2>
+            <p class="mb-4">趣兔旅游提供全方位旅行支持，让您的旅途省心、舒心、开心</p>
+            <ul class="list-group list-group-flush mb-4">
+              <li class="list-group-item d-flex align-items-center">
+                <i class="fa fa-check-circle text-primary me-3"></i>
+                <span>定制专属行程，根据需求灵活调整</span>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+                <i class="fa fa-check-circle text-primary me-3"></i>
+                <span>精选当地特色住宿，体验原汁原味</span>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+                <i class="fa fa-check-circle text-primary me-3"></i>
+                <span>24小时在线客服，随时解决旅行问题</span>
+              </li>
+            </ul>
+            <button class="btn btn-primary" id="infoBtn">获取旅行方案</button>
+          </div>
+          <div class="col-md-6">
+            <img src="https://picsum.photos/800/600?random=13" class="img-fluid rounded shadow-lg" alt="旅游服务展示">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系区块 -->
+    <section id="contact" class="section-padding bg-light">
+      <div class="container">
+        <div class="text-center mb-10">
+          <h2 class="display-5">咨询旅行详情</h2>
+          <p class="text-muted">填写以下信息，我们会尽快为您提供专属旅行建议</p>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">姓名</label>
+                  <input type="text" class="form-control" id="name" placeholder="请输入您的姓名">
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label">电话</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="请输入联系电话">
+                </div>
+                <div class="col-12">
+                  <label for="destination" class="form-label">意向目的地</label>
+                  <input type="text" class="form-control" id="destination" placeholder="比如：马达京岛、汀巴汀巴岛">
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label">备注需求</label>
+                  <textarea class="form-control" id="message" rows="4" placeholder="请告诉我们您的出行时间、人数或特殊需求"></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">提交咨询</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h5 class="mb-3"><i class="fa fa-paw text-primary me-2"></i>趣兔旅游</h5>
+          <p>用心打造每一段旅程，让旅行成为生活中最美的记忆</p>
+        </div>
+        <div class="col-md-6">
+          <h5 class="mb-3">联系方式</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fa fa-envelope text-primary me-2"></i>service@qutu-tour.com</li>
+            <li class="mb-2"><i class="fa fa-phone text-primary me-2"></i>400-888-9999</li>
+            <li>
+              <a href="#" class="text-white me-3"><i class="fa fa-weixin fa-lg"></i></a>
+              <a href="#" class="text-white me-3"><i class="fa fa-weibo fa-lg"></i></a>
+              <a href="#" class="text-white"><i class="fa fa-instagram fa-lg"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr class="bg-secondary my-4">
+      <div class="text-center">
+        <p>&copy; 2023 趣兔旅游 - 让旅行更有趣</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 引入Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // 按钮点击事件（旅游主题）
+    document.getElementById('infoBtn').addEventListener('click', function() {
+      alert('专属旅行方案正在为您准备中，将在24小时内联系您！');
+    });
+
+    // 表单提交事件（旅游主题）
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('咨询提交成功！我们的旅行顾问会尽快与您联系~');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
