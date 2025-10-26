@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的网页</title>
+  <!-- 引入外部资源：Bootstrap/Tailwind + Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav>...</nav>
+  
+  <!-- 主要内容区 -->
+  <main>
+    <section>...</section> <!-- 区块1 -->
+    <section>...</section> <!-- 区块2 -->
+  </main>
+  
+  <!-- 页脚 -->
+  <footer>...</footer>
+</body>
+</html><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的网页</title>
+  <!-- 引入外部资源 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <style>
+    /* 简单自定义样式 */
+    .navbar {
+      transition: background-color 0.3s;
+    }
+    .navbar-scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .section-padding {
+      padding: 80px 0;
+    }
+    .card-hover {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 - 使用Bootstrap组件 -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fa fa-star text-primary me-2"></i>我的网页
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">首页</a></li>
+          <li class="nav-item"><a class="nav-link" href="#section1">区块1</a></li>
+          <li class="nav-item"><a class="nav-link" href="#section2">区块2</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 英雄区 -->
+  <section id="home" class="bg-primary text-white py-20 mt-5">
+    <div class="container text-center">
+      <h1 class="display-4 mb-4">你好，欢迎来到我的网页</h1>
+      <p class="lead mb-6">这是一个使用Bootstrap构建的响应式网页示例</p>
+      <a href="#section1" class="btn btn-light btn-lg">
+        了解更多 <i class="fa fa-arrow-down ms-2"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 主要内容区 -->
+  <main>
+    <!-- 区块1 -->
+    <section id="section1" class="section-padding bg-light">
+      <div class="container">
+        <div class="text-center mb-10">
+          <h2 class="display-5">一个精彩的区块</h2>
+          <p class="text-muted">这里可以展示你的主要内容</p>
+        </div>
+        
+        <div class="row g-4">
+          <!-- 卡片1 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100">
+              <img src="https://picsum.photos/600/400?random=1" class="card-img-top" alt="示例图片">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-check-circle text-success me-2"></i>特色功能1</h5>
+                <p class="card-text">这是第一个特色功能的详细描述，可以根据需要修改内容。</p>
+                <a href="#" class="btn btn-outline-primary">查看详情</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 卡片2 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100">
+              <img src="https://picsum.photos/600/400?random=2" class="card-img-top" alt="示例图片">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-check-circle text-success me-2"></i>特色功能2</h5>
+                <p class="card-text">这是第二个特色功能的详细描述，可以根据需要修改内容。</p>
+                <a href="#" class="btn btn-outline-primary">查看详情</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 卡片3 -->
+          <div class="col-md-4">
+            <div class="card card-hover h-100">
+              <img src="https://picsum.photos/600/400?random=3" class="card-img-top" alt="示例图片">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-check-circle text-success me-2"></i>特色功能3</h5>
+                <p class="card-text">这是第三个特色功能的详细描述，可以根据需要修改内容。</p>
+                <a href="#" class="btn btn-outline-primary">查看详情</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 区块2 -->
+    <section id="section2" class="section-padding">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-6 mb-md-0">
+            <h2 class="display-5 mb-4">厉害的功能展示</h2>
+            <p class="mb-4">这里可以详细介绍你的核心功能或服务，说明为什么它很厉害，能解决什么问题。</p>
+            <ul class="list-group list-group-flush mb-4">
+              <li class="list-group-item d-flex align-items-center">
+                <i class="fa fa-star text-warning me-3"></i>
+                <span>高效实用的解决方案</span>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+                <i class="fa fa-star text-warning me-3"></i>
+                <span>简洁美观的用户界面</span>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+                <i class="fa fa-star text-warning me-3"></i>
+                <span>全面的功能覆盖</span>
+              </li>
+            </ul>
+            <button class="btn btn-primary" id="infoBtn">获取更多信息</button>
+          </div>
+          <div class="col-md-6">
+            <img src="https://picsum.photos/800/600?random=4" class="img-fluid rounded shadow-lg" alt="功能展示图">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系区块 -->
+    <section id="contact" class="section-padding bg-light">
+      <div class="container">
+        <div class="text-center mb-10">
+          <h2 class="display-5">联系我们</h2>
+          <p class="text-muted">有任何问题，欢迎随时联系</p>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">姓名</label>
+                  <input type="text" class="form-control" id="name" placeholder="请输入姓名">
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">邮箱</label>
+                  <input type="email" class="form-control" id="email" placeholder="请输入邮箱">
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label">留言</label>
+                  <textarea class="form-control" id="message" rows="4" placeholder="请输入您的留言"></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">提交留言</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h5 class="mb-3"><i class="fa fa-star text-primary me-2"></i>我的网页</h5>
+          <p>所以呢？当然是一个很棒的网页啦！</p>
+        </div>
+        <div class="col-md-6">
+          <h5 class="mb-3">联系方式</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fa fa-envelope text-primary me-2"></i>contact@example.com</li>
+            <li class="mb-2"><i class="fa fa-phone text-primary me-2"></i>123-4567-8910</li>
+            <li>
+              <a href="#" class="text-white me-3"><i class="fa fa-weixin fa-lg"></i></a>
+              <a href="#" class="text-white me-3"><i class="fa fa-weibo fa-lg"></i></a>
+              <a href="#" class="text-white"><i class="fa fa-github fa-lg"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr class="bg-secondary my-4">
+      <div class="text-center">
+        <p>&copy; 2023 我的网页 - 保留所有权利</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 引入Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // 按钮点击事件
+    document.getElementById('infoBtn').addEventListener('click', function() {
+      alert('更多信息即将推出，敬请期待！');
+    });
+
+    // 表单提交事件
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('留言提交成功，我们会尽快回复您！');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
