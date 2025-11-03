@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>目的地详情 - 趣兔旅游</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <style>
+    /* 复用主站样式 */
+    .navbar {
+      transition: background-color 0.3s;
+    }
+    .navbar-scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .section-padding {
+      padding: 60px 0;
+    }
+    .bg-primary {
+      background-color: #2a9d8f !important;
+    }
+    .text-primary {
+      color: #2a9d8f !important;
+    }
+    .btn-primary {
+      background-color: #2a9d8f;
+      border-color: #2a9d8f;
+    }
+    .btn-primary:hover {
+      background-color: #21867a;
+      border-color: #21867a;
+    }
+    .itinerary-item {
+      border-left: 3px solid #2a9d8f;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"> <!-- 注意修改为主页文件名 -->
+        <i class="fa fa-paw text-primary me-2"></i>趣兔旅游
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html#home">首页</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html#destinations">热门目的地</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#services">我们的服务</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 详情页头部 -->
+  <header class="bg-primary text-white py-16 mt-5">
+    <div class="container">
+      <h1 class="display-4" id="destinationTitle">目的地详情</h1>
+      <p class="lead" id="destinationDesc">加载中...</p>
+    </div>
+  </header>
+
+  <!-- 详情内容区 -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row">
+        <!-- 左侧图片展示 -->
+        <div class="col-md-6 mb-6 mb-md-0">
+          <div id="destinationImages" class="rounded shadow-lg overflow-hidden">
+            <!-- 图片将通过JS动态加载 -->
+            <img src="https://picsum.photos/800/600?random=30" class="w-100" alt="目的地图片">
+          </div>
+        </div>
+        
+        <!-- 右侧行程信息 -->
+        <div class="col-md-6">
+          <h3 class="mb-4">推荐行程</h3>
+          <div id="itineraryList">
+            <!-- 行程将通过JS动态加载 -->
+            <div class="itinerary-item">
+              <h5>第1天：抵达目的地</h5>
+              <p>办理入住，休息调整，傍晚漫步沙滩欣赏日落</p>
+            </div>
+            <div class="itinerary-item">
+              <h5>第2天：浮潜体验</h5>
+              <p>专业教练指导浮潜，探索绚丽珊瑚礁和热带鱼群</p>
+            </div>
+            <div class="itinerary-item">
+              <h5>第3天：离岛返程</h5>
+              <p>早餐后自由活动，适时退房返程</p>
+            </div>
+          </div>
+          
+          <div class="mt-5 p-4 bg-light rounded">
+            <h5 class="mb-3"><i class="fa fa-info-circle text-primary me-2"></i>行程信息</h5>
+            <p><strong>参考价格：</strong><span id="priceInfo">¥5,699/人起</span></p>
+            <p><strong>行程天数：</strong>3天2晚</p>
+            <p><strong>包含服务：</strong>往返交通、住宿、早餐、浮潜装备</p>
+          </div>
+          
+          <button class="btn btn-primary mt-4" onclick="window.location.href='index.html#contact'">
+            立即咨询 <i class="fa fa-arrow-right ms-1"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-8">
+    <div class="container">
+      <div class="text-center">
+        <p>&copy; 2023 趣兔旅游 - 让旅行更有趣</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('navbar-scrolled', window.scrollY > 50);
+    });
+
+    // 解析URL参数，获取目的地名称
+    function getDestinationName() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('name');
+    }
+
+    // 根据目的地名称加载不同内容
+    function loadDestinationData() {
+      const name = getDestinationName();
+      const destinations = {
+        '马达京岛': {
+          title: '马达京岛 - 潜水天堂',
+          desc: '马来西亚沙巴州的隐秘天堂，以清澈海水和丰富海洋生物闻名',
+          price: '¥6,299/人起',
+          image: 'https://picsum.photos/800/600?random=20',
+          itinerary: [
+            {day: '第1天', content: '抵达斗湖机场，乘车前往仙本那，转乘快艇上岛，入住水上屋'},
+            {day: '第2天', content: '清晨观日出，上午体验深潜，探索海底珊瑚花园，下午自由活动'},
+            {day: '第3天', content: '参加岛上午餐BBQ，下午体验海上摩托，傍晚返程'}
+          ]
+        },
+        '汀巴汀巴岛': {
+          title: '汀巴汀巴岛 - 原始秘境',
+          desc: '原始生态保存完好的小众岛屿，白色沙滩环绕，水下珊瑚绚丽多彩',
+          price: '¥5,899/人起',
+          image: 'https://picsum.photos/800/600?random=21',
+          itinerary: [
+            {day: '第1天', content: '抵达岛屿，办理入住，体验玻璃船观光'},
+            {day: '第2天', content: '浮潜探索珊瑚礁，参观原始渔村，体验当地美食'},
+            {day: '第3天', content: '沙滩瑜伽，自由拍照，午后返程'}
+          ]
+        },
+        '马布达岛': {
+          title: '马布达岛 - 文化交融',
+          desc: '融合原始渔村与奢华度假村的独特岛屿，可体验当地文化',
+          price: '¥7,599/人起',
+          image: 'https://picsum.photos/800/600?random=22',
+          itinerary: [
+            {day: '第1天', content: '入住奢华度假村，享受欢迎饮品，体验SPA放松'},
+            {day: '第2天', content: '参观巴夭族渔村，了解当地文化，深海钓鱼体验'},
+            {day: '第3天', content: '私人沙滩野餐，购买手工艺品，傍晚返程'}
+          ]
+        }
+      };
+
+      // 处理资源不存在的情况
+      if (!name || !destinations[name]) {
+        document.getElementById('destinationTitle').textContent = '资源不存在';
+        document.getElementById('destinationDesc').textContent = '抱歉，您访问的目的地信息暂未收录';
+        document.getElementById('itineraryList').innerHTML = `
+          <div class="text-center p-5">
+            <i class="fa fa-exclamation-triangle text-warning fa-3x mb-3"></i>
+            <p>请返回首页查看其他目的地</p>
+            <button class="btn btn-primary mt-2" onclick="window.location.href='index.html'">
+              返回首页
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      // 加载对应目的地数据
+      const data = destinations[name];
+      document.getElementById('destinationTitle').textContent = data.title;
+      document.getElementById('destinationDesc').textContent = data.desc;
+      document.getElementById('priceInfo').textContent = data.price;
+      document.querySelector('#destinationImages img').src = data.image;
+      
+      // 生成行程列表
+      let itineraryHtml = '';
+      data.itinerary.forEach(item => {
+        itineraryHtml += `
+          <div class="itinerary-item">
+            <h5>${item.day}</h5>
+            <p>${item.content}</p>
+          </div>
+        `;
+      });
+      document.getElementById('itineraryList').innerHTML = itineraryHtml;
+    }
+
+    // 页面加载时执行
+    window.addEventListener('DOMContentLoaded', loadDestinationData);
+  </script>
+</body>
+</html>
