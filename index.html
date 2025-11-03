@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
   <style>
-    /* 旅游主题样式调整 */
+    /* 基础样式保持不变 */
     .navbar {
       transition: background-color 0.3s;
     }
@@ -26,9 +26,8 @@
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
-    /* 旅游主题颜色 */
     .bg-primary {
-      background-color: #2a9d8f !important; /* 自然绿 */
+      background-color: #2a9d8f !important;
     }
     .text-primary {
       color: #2a9d8f !important;
@@ -41,10 +40,44 @@
       background-color: #21867a;
       border-color: #21867a;
     }
+    
+    /* 新增：弹窗样式 */
+    .modal-backdrop {
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* 新增：加载动画 */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* 表单验证样式 */
+    .invalid-feedback {
+      display: none;
+    }
+    .is-invalid ~ .invalid-feedback {
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <!-- 导航栏 - 旅游主题 -->
+  <!-- 导航栏 -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -64,135 +97,145 @@
     </div>
   </nav>
 
-  <!-- 英雄区 - 旅游主题 -->
+  <!-- 英雄区 -->
   <section id="home" class="bg-primary text-white py-20 mt-5">
     <div class="container text-center">
       <h1 class="display-4 mb-4">趣兔旅游，带您探索世界</h1>
       <p class="lead mb-6">精选全球目的地，定制专属旅程，让每一次出行都充满惊喜</p>
-      <a href="#destinations" class="btn btn-light btn-lg">
+      <a href="#destinations" class="btn btn-light btn-lg explore-btn">
         探索目的地 <i class="fa fa-compass ms-2"></i>
       </a>
     </div>
   </section>
 
-  <!-- 主要内容区 -->
-  <main>
-    <!-- 热门目的地（原区块1） -->
-    <section id="destinations" class="section-padding bg-light">
-      <div class="container">
-        <div class="text-center mb-10">
-          <h2 class="display-5">热门目的地</h2>
-          <p class="text-muted">精选全球热门旅游岛屿，总有一处适合你</p>
+  <!-- 热门目的地 -->
+  <section id="destinations" class="section-padding bg-light">
+    <div class="container">
+      <div class="text-center mb-10">
+        <h2 class="display-5">热门目的地</h2>
+        <p class="text-muted">精选全球热门旅游岛屿，总有一处适合你</p>
+      </div>
+      
+      <div class="row g-4">
+        <!-- 目的地卡片1：马达京岛 -->
+        <div class="col-md-4">
+          <div class="card card-hover h-100">
+            <img src="https://picsum.photos/600/400?random=20" class="card-img-top" alt="马达京岛">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>马达京岛</h5>
+              <p class="card-text">马来西亚沙巴州的隐秘天堂，以清澈海水和丰富海洋生物闻名，是潜水爱好者的乐园。</p>
+              <a href="destination-detail.html?name=马达京岛" class="btn btn-outline-primary view-itinerary" data-destination="马达京岛">
+                查看行程
+              </a>
+            </div>
+          </div>
         </div>
         
-        <div class="row g-4">
-          <!-- 目的地卡片1：马达京岛 -->
-          <div class="col-md-4">
-            <div class="card card-hover h-100">
-              <img src="https://picsum.photos/600/400?random=20" class="card-img-top" alt="马达京岛">
-              <div class="card-body">
-                <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>马达京岛</h5>
-                <p class="card-text">马来西亚沙巴州的隐秘天堂，以清澈海水和丰富海洋生物闻名，是潜水爱好者的乐园。</p>
-                <a href="#" class="btn btn-outline-primary">查看行程</a>
-              </div>
+        <!-- 目的地卡片2：汀巴汀巴岛 -->
+        <div class="col-md-4">
+          <div class="card card-hover h-100">
+            <img src="https://picsum.photos/600/400?random=21" class="card-img-top" alt="汀巴汀巴岛">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>汀巴汀巴岛</h5>
+              <p class="card-text">原始生态保存完好的小众岛屿，白色沙滩环绕，水下珊瑚绚丽多彩，适合度假放松。</p>
+              <a href="destination-detail.html?name=汀巴汀巴岛" class="btn btn-outline-primary view-itinerary" data-destination="汀巴汀巴岛">
+                查看行程
+              </a>
             </div>
           </div>
-          
-          <!-- 目的地卡片2：汀巴汀巴岛 -->
-          <div class="col-md-4">
-            <div class="card card-hover h-100">
-              <img src="https://picsum.photos/600/400?random=21" class="card-img-top" alt="汀巴汀巴岛">
-              <div class="card-body">
-                <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>汀巴汀巴岛</h5>
-                <p class="card-text">原始生态保存完好的小众岛屿，白色沙滩环绕，水下珊瑚绚丽多彩，适合度假放松。</p>
-                <a href="#" class="btn btn-outline-primary">查看行程</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- 目的地卡片3：马布达岛 -->
-          <div class="col-md-4">
-            <div class="card card-hover h-100">
-              <img src="https://picsum.photos/600/400?random=22" class="card-img-top" alt="马布达岛">
-              <div class="card-body">
-                <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>马布达岛</h5>
-                <p class="card-text">融合原始渔村与奢华度假村的独特岛屿，可体验当地文化，也能享受高端度假服务。</p>
-                <a href="#" class="btn btn-outline-primary">查看行程</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 我们的服务（原区块2） -->
-    <section id="services" class="section-padding">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 mb-6 mb-md-0">
-            <h2 class="display-5 mb-4">专业旅游服务</h2>
-            <p class="mb-4">趣兔旅游提供全方位旅行支持，让您的旅途省心、舒心、开心</p>
-            <ul class="list-group list-group-flush mb-4">
-              <li class="list-group-item d-flex align-items-center">
-                <i class="fa fa-check-circle text-primary me-3"></i>
-                <span>定制专属行程，根据需求灵活调整</span>
-              </li>
-              <li class="list-group-item d-flex align-items-center">
-                <i class="fa fa-check-circle text-primary me-3"></i>
-                <span>精选当地特色住宿，体验原汁原味</span>
-              </li>
-              <li class="list-group-item d-flex align-items-center">
-                <i class="fa fa-check-circle text-primary me-3"></i>
-                <span>24小时在线客服，随时解决旅行问题</span>
-              </li>
-            </ul>
-            <button class="btn btn-primary" id="infoBtn">获取旅行方案</button>
-          </div>
-          <div class="col-md-6">
-            <img src="https://picsum.photos/800/600?random=13" class="img-fluid rounded shadow-lg" alt="旅游服务展示">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 联系区块 -->
-    <section id="contact" class="section-padding bg-light">
-      <div class="container">
-        <div class="text-center mb-10">
-          <h2 class="display-5">咨询旅行详情</h2>
-          <p class="text-muted">填写以下信息，我们会尽快为您提供专属旅行建议</p>
         </div>
         
-        <div class="row justify-content-center">
-          <div class="col-md-8">
-            <form>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="name" class="form-label">姓名</label>
-                  <input type="text" class="form-control" id="name" placeholder="请输入您的姓名">
-                </div>
-                <div class="col-md-6">
-                  <label for="phone" class="form-label">电话</label>
-                  <input type="tel" class="form-control" id="phone" placeholder="请输入联系电话">
-                </div>
-                <div class="col-12">
-                  <label for="destination" class="form-label">意向目的地</label>
-                  <input type="text" class="form-control" id="destination" placeholder="比如：马达京岛、汀巴汀巴岛">
-                </div>
-                <div class="col-12">
-                  <label for="message" class="form-label">备注需求</label>
-                  <textarea class="form-control" id="message" rows="4" placeholder="请告诉我们您的出行时间、人数或特殊需求"></textarea>
-                </div>
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary">提交咨询</button>
-                </div>
-              </div>
-            </form>
+        <!-- 目的地卡片3：马布达岛 -->
+        <div class="col-md-4">
+          <div class="card card-hover h-100">
+            <img src="https://picsum.photos/600/400?random=22" class="card-img-top" alt="马布达岛">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa fa-map-marker text-primary me-2"></i>马布达岛</h5>
+              <p class="card-text">融合原始渔村与奢华度假村的独特岛屿，可体验当地文化，也能享受高端度假服务。</p>
+              <a href="destination-detail.html?name=马布达岛" class="btn btn-outline-primary view-itinerary" data-destination="马布达岛">
+                查看行程
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- 我们的服务 -->
+  <section id="services" class="section-padding">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-6 mb-md-0">
+          <h2 class="display-5 mb-4">专业旅游服务</h2>
+          <p class="mb-4">趣兔旅游提供全方位旅行支持，让您的旅途省心、舒心、开心</p>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fa fa-check-circle text-primary me-3"></i>
+              <span>定制专属行程，根据需求灵活调整</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fa fa-check-circle text-primary me-3"></i>
+              <span>精选当地特色住宿，体验原汁原味</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fa fa-check-circle text-primary me-3"></i>
+              <span>24小时在线客服，随时解决旅行问题</span>
+            </li>
+          </ul>
+          <button class="btn btn-primary" id="infoBtn" data-bs-toggle="modal" data-bs-target="#customPlanModal">
+            获取旅行方案
+          </button>
+        </div>
+        <div class="col-md-6">
+          <img src="https://picsum.photos/800/600?random=13" class="img-fluid rounded shadow-lg" alt="旅游服务展示">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系区块 -->
+  <section id="contact" class="section-padding bg-light">
+    <div class="container">
+      <div class="text-center mb-10">
+        <h2 class="display-5">咨询旅行详情</h2>
+        <p class="text-muted">填写以下信息，我们会尽快为您提供专属旅行建议</p>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form id="contactForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">姓名</label>
+                <input type="text" class="form-control" id="name" placeholder="请输入您的姓名" required>
+                <div class="invalid-feedback">请输入您的姓名</div>
+              </div>
+              <div class="col-md-6">
+                <label for="phone" class="form-label">电话</label>
+                <input type="tel" class="form-control" id="phone" placeholder="请输入联系电话" required>
+                <div class="invalid-feedback">请输入有效的联系电话</div>
+              </div>
+              <div class="col-12">
+                <label for="destination" class="form-label">意向目的地</label>
+                <input type="text" class="form-control" id="destination" placeholder="比如：马达京岛、汀巴汀巴岛" required>
+                <div class="invalid-feedback">请输入意向目的地</div>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">备注需求</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="请告诉我们您的出行时间、人数或特殊需求"></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary submit-btn">
+                  提交咨询
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 页脚 -->
   <footer class="bg-dark text-white py-8">
@@ -208,9 +251,16 @@
             <li class="mb-2"><i class="fa fa-envelope text-primary me-2"></i>service@qutu-tour.com</li>
             <li class="mb-2"><i class="fa fa-phone text-primary me-2"></i>400-888-9999</li>
             <li>
-              <a href="#" class="text-white me-3"><i class="fa fa-weixin fa-lg"></i></a>
-              <a href="#" class="text-white me-3"><i class="fa fa-weibo fa-lg"></i></a>
-              <a href="#" class="text-white"><i class="fa fa-instagram fa-lg"></i></a>
+              <!-- 社交图标链接到实际平台 -->
+              <a href="https://weixin.qq.com/" class="text-white me-3 social-link" target="_blank" data-platform="微信">
+                <i class="fa fa-weixin fa-lg"></i>
+              </a>
+              <a href="https://weibo.com/" class="text-white me-3 social-link" target="_blank" data-platform="微博">
+                <i class="fa fa-weibo fa-lg"></i>
+              </a>
+              <a href="https://www.instagram.com/" class="text-white social-link" target="_blank" data-platform="Instagram">
+                <i class="fa fa-instagram fa-lg"></i>
+              </a>
             </li>
           </ul>
         </div>
@@ -222,39 +272,233 @@
     </div>
   </footer>
 
-  <!-- 引入Bootstrap JS -->
+  <!-- 定制旅行方案弹窗 -->
+  <div class="modal fade" id="customPlanModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">定制专属旅行方案</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="customPlanForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="planName" class="form-label">您的姓名</label>
+                <input type="text" class="form-control" id="planName" required>
+              </div>
+              <div class="col-md-6">
+                <label for="planPhone" class="form-label">联系电话</label>
+                <input type="tel" class="form-control" id="planPhone" required>
+              </div>
+              <div class="col-md-6">
+                <label for="planDestination" class="form-label">意向目的地</label>
+                <select class="form-select" id="planDestination" required>
+                  <option value="">请选择目的地</option>
+                  <option value="马达京岛">马达京岛</option>
+                  <option value="汀巴汀巴岛">汀巴汀巴岛</option>
+                  <option value="马布达岛">马布达岛</option>
+                  <option value="其他">其他</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="planDate" class="form-label">计划出行时间</label>
+                <input type="date" class="form-control" id="planDate" required>
+              </div>
+              <div class="col-md-6">
+                <label for="planPeople" class="form-label">出行人数</label>
+                <input type="number" class="form-control" id="planPeople" min="1" value="2" required>
+              </div>
+              <div class="col-md-6">
+                <label for="planBudget" class="form-label">预算范围(人均)</label>
+                <select class="form-select" id="planBudget" required>
+                  <option value="">请选择预算</option>
+                  <option value="5000以下">5000元以下</option>
+                  <option value="5000-10000">5000-10000元</option>
+                  <option value="10000-20000">10000-20000元</option>
+                  <option value="20000以上">20000元以上</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="planRequirements" class="form-label">特殊需求</label>
+                <textarea class="form-control" id="planRequirements" rows="3" placeholder="例如：需要潜水安排、偏好海景酒店等"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="submitPlanBtn">提交定制需求</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入外部JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- 引入axios用于AJAX请求 -->
   <script>
     // 导航栏滚动效果
     window.addEventListener('scroll', function() {
       const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('navbar-scrolled');
-      } else {
-        navbar.classList.remove('navbar-scrolled');
-      }
+      navbar.classList.toggle('navbar-scrolled', window.scrollY > 50);
     });
 
-    // 平滑滚动
+    // 1. 导航与探索按钮：平滑滚动到对应区域
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        // 滚动到目标位置（考虑导航栏高度）
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
           behavior: 'smooth'
         });
+        
+        // 如果是移动端，点击后关闭导航菜单
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+          navbarCollapse.classList.remove('show');
+        }
       });
     });
 
-    // 按钮点击事件（旅游主题）
-    document.getElementById('infoBtn').addEventListener('click', function() {
-      alert('专属旅行方案正在为您准备中，将在24小时内联系您！');
+    // 2. "查看行程"按钮：跳转前记录用户感兴趣的目的地（可用于后续统计）
+    document.querySelectorAll('.view-itinerary').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const destination = this.getAttribute('data-destination');
+        
+        // 记录用户感兴趣的目的地（实际项目中可发送到后端统计）
+        console.log(`用户查看了${destination}的行程`);
+        
+        // 可以在这里添加加载动画，延迟跳转增强体验
+        this.innerHTML = '<span class="loading"></span>加载中...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+          // 实际项目中会跳转到真实的详情页
+          window.location.href = this.getAttribute('href');
+        }, 800);
+      });
     });
 
-    // 表单提交事件（旅游主题）
-    document.querySelector('form').addEventListener('submit', function(e) {
+    // 3. "提交定制需求"按钮：处理定制方案表单
+    document.getElementById('submitPlanBtn').addEventListener('click', function() {
+      const form = document.getElementById('customPlanForm');
+      const name = document.getElementById('planName').value;
+      const phone = document.getElementById('planPhone').value;
+      
+      // 简单验证
+      if (!name || !phone) {
+        alert('请填写姓名和联系电话');
+        return;
+      }
+      
+      // 收集表单数据
+      const formData = {
+        name: name,
+        phone: phone,
+        destination: document.getElementById('planDestination').value,
+        date: document.getElementById('planDate').value,
+        people: document.getElementById('planPeople').value,
+        budget: document.getElementById('planBudget').value,
+        requirements: document.getElementById('planRequirements').value
+      };
+      
+      // 模拟提交到后端
+      this.innerHTML = '<span class="loading"></span>提交中...';
+      this.disabled = true;
+      
+      // 实际项目中使用axios.post发送到后端接口
+      setTimeout(() => {
+        console.log('定制方案需求提交成功：', formData);
+        alert('您的定制需求已提交！旅行顾问将在12小时内与您联系');
+        
+        // 关闭弹窗并重置表单
+        const modal = bootstrap.Modal.getInstance(document.getElementById('customPlanModal'));
+        modal.hide();
+        form.reset();
+        this.innerHTML = '提交定制需求';
+        this.disabled = false;
+      }, 1500);
+    });
+
+    // 4. "提交咨询"按钮：处理联系表单
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('咨询提交成功！我们的旅行顾问会尽快与您联系~');
-      this.reset();
+      const submitBtn = this.querySelector('.submit-btn');
+      const nameInput = document.getElementById('name');
+      const phoneInput = document.getElementById('phone');
+      const destinationInput = document.getElementById('destination');
+      
+      // 表单验证
+      let isValid = true;
+      const phoneRegex = /^1[3-9]\d{9}$/;
+      
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        nameInput.classList.remove('is-invalid');
+      }
+      
+      if (!phoneRegex.test(phoneInput.value.trim())) {
+        phoneInput.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        phoneInput.classList.remove('is-invalid');
+      }
+      
+      if (!destinationInput.value.trim()) {
+        destinationInput.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        destinationInput.classList.remove('is-invalid');
+      }
+      
+      if (!isValid) return;
+      
+      // 收集表单数据
+      const formData = {
+        name: nameInput.value,
+        phone: phoneInput.value,
+        destination: destinationInput.value,
+        message: document.getElementById('message').value
+      };
+      
+      // 模拟提交到后端
+      submitBtn.innerHTML = '<span class="loading"></span>提交中...';
+      submitBtn.disabled = true;
+      
+      // 实际项目中使用：
+      // axios.post('/api/contact', formData)
+      //   .then(response => { ... })
+      
+      setTimeout(() => {
+        console.log('咨询提交成功：', formData);
+        alert('咨询提交成功！我们的旅行顾问会在24小时内与您联系');
+        this.reset();
+        submitBtn.innerHTML = '提交咨询';
+        submitBtn.disabled = false;
+      }, 1500);
+    });
+
+    // 5. 社交图标按钮：跳转前记录用户行为
+    document.querySelectorAll('.social-link').forEach(link => {
+      link.addEventListener('click', function() {
+        const platform = this.getAttribute('data-platform');
+        console.log(`用户点击了${platform}链接`);
+        // 实际项目中可用于统计用户偏好的社交平台
+      });
+    });
+
+    // 输入框聚焦时移除错误状态
+    document.querySelectorAll('input, textarea').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.classList.remove('is-invalid');
+      });
     });
   </script>
 </body>
